@@ -1,0 +1,96 @@
+<br />
+<br />
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col" s5>
+      <div class="card">
+        <div class="card-content">
+          <form #studentForm="ngForm" (ngSubmit)="addStudent
+          (studentForm)">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "studentService.selectedStudent._id">
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  type="text"
+                  name="name"
+                  #name="ngModel"
+                  [(ngModel)]="studentService.selectedStudent.name"
+                  placeholder="Enter name"
+                />
+                <div class="input-field col s12">
+                  <input
+                    type="text"
+                    name="lastName"
+                    #lastName="ngModel"
+                    [(ngModel)]="studentService.selectedStudent.lastName"
+                    placeholder="Enter your lastName"
+                  />
+                </div>
+                <div class="input-field col s12">
+                  <input
+                    type="text"
+                    name="secondSurname"
+                    #secondSurname="ngModel"
+                    [(ngModel)]="studentService.selectedStudent.secondSurname"
+                    placeholder="Enter your secondSurname"
+                  />
+                </div>
+                <div class="input-field col s12">
+                  <input
+                    type="text"
+                    name="grades"
+                    #grades="ngModel"
+                    [(ngModel)]="studentService.selectedStudent.grades"
+                    placeholder="Enter your grade"
+                  />
+                </div>
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <a
+                      class="waves-effect waves-light btn-small"
+                      (click)="addStudent(studentForm)"
+                      ><i class="material-icons "></i> Save!
+                    </a>
+                    <a
+                      class="waves-effect waves-light btn-small"
+                      (click)="resetform(studentForm)"
+                      ><i class="material-icons right"></i>Clean</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col s7">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Second Surnname</th>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of studentService.students">
+                <td>{{student.name}}</td>
+                <td>{{student.lastName}}</td>
+                <td>{{student.secondSurname}}</td>
+                <td>
+                  <a (click)="editStudent(student)">
+                    <i class="material-icons">edit</i>
+                  </a>
+                  <a (click)="deleteStudent(student._id)">
+                      <i class="material-icons">delete</i>
+                    </a>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
