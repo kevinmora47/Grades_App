@@ -24,7 +24,6 @@ export class StudentsComponent implements OnInit {
       this.studentService.putStudent(form.value).subscribe(res => {
         this.resetform(form);
         this.getStudent();
-        M.toast({ html: "Student updated!" });
         console.log("updated!");
         this.resetform(form);
       });
@@ -32,8 +31,7 @@ export class StudentsComponent implements OnInit {
       this.studentService.postStudent(form.value).subscribe(res => {
         console.log(res);
         this.getStudent();
-        this.resetform(form);
-        M.toast({ html: "Saved Succesfully!" });
+        this.resetform(form); 
       });
     }
   }
